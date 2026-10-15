@@ -11,7 +11,7 @@ use std::io;
 use std::path::{Path, PathBuf};
 use std::str::FromStr;
 
-#[derive(serde::Deserialize, serde::Serialize, Clone)]
+#[derive(serde::Deserialize, serde::Serialize, schemars::JsonSchema, Clone)]
 pub struct Metadata {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub title: Option<String>,
@@ -21,14 +21,14 @@ pub struct Metadata {
     pub minimum_version: Option<String>,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, Clone)]
+#[derive(serde::Deserialize, serde::Serialize, schemars::JsonSchema, Clone)]
 #[serde(untagged)]
 pub enum Timestep {
     Days(u64),
     Frequency(String),
 }
 
-#[derive(serde::Deserialize, serde::Serialize, Clone)]
+#[derive(serde::Deserialize, serde::Serialize, schemars::JsonSchema, Clone)]
 pub struct Timestepper {
     pub start: DateTime,
     pub end: DateTime,
@@ -54,18 +54,19 @@ where
     Ok(slice)
 }
 
-#[derive(serde::Deserialize, serde::Serialize, Clone)]
+#[derive(serde::Deserialize, serde::Serialize, schemars::JsonSchema, Clone)]
 pub struct Scenario {
     pub name: String,
     pub size: usize,
     #[serde(skip_serializing_if = "Option::is_none")]
     #[serde(default, deserialize_with = "validate_scenario_slice_length")]
+    #[schemars(length(min = 1, max = 3))]
     pub slice: Option<Vec<Option<usize>>>,
     #[serde(skip_serializing_if = "Option::is_none")]
     pub ensemble_names: Option<Vec<String>>,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, Clone)]
+#[derive(serde::Deserialize, serde::Serialize, schemars::JsonSchema, Clone)]
 pub struct PywrNetwork {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub nodes: Option<Vec<Node>>,
@@ -76,6 +77,8 @@ pub struct PywrNetwork {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub tables: Option<TableVec>,
     #[serde(skip_serializing_if = "Option::is_none")]
+    // The deserialiser keeps any JSON value; the schema asks for the object that Pywr reads.
+    #[schemars(with = "Option<serde_json::Map<String, serde_json::Value>>")]
     pub recorders: Option<serde_json::Value>,
 }
 
@@ -243,7 +246,7 @@ impl PywrNetwork {
     }
 }
 
-#[derive(serde::Deserialize, serde::Serialize, Clone)]
+#[derive(serde::Deserialize, serde::Serialize, schemars::JsonSchema, Clone)]
 pub struct PywrModel {
     pub metadata: Metadata,
     pub timestepper: Timestepper,
@@ -351,7 +354,7 @@ impl PywrModel {
     }
 }
 
-#[derive(serde::Deserialize, serde::Serialize, Clone)]
+#[derive(serde::Deserialize, serde::Serialize, schemars::JsonSchema, Clone)]
 pub struct SubModel {
     pub name: String,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -364,7 +367,7 @@ pub struct SubModel {
     pub solver: Option<String>,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, Clone)]
+#[derive(serde::Deserialize, serde::Serialize, schemars::JsonSchema, Clone)]
 pub struct PywrMultiModel {
     pub metadata: Metadata,
     pub timestepper: Timestepper,

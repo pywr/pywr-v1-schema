@@ -5,7 +5,7 @@ use std::collections::HashMap;
 use std::path::PathBuf;
 
 // TODO complete these
-#[derive(serde::Deserialize, serde::Serialize, Debug, Clone)]
+#[derive(serde::Deserialize, serde::Serialize, schemars::JsonSchema, Debug, Clone)]
 #[serde(rename_all = "lowercase")]
 pub enum AggFunc {
     Sum,
@@ -14,7 +14,9 @@ pub enum AggFunc {
     Min,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, Debug, Clone, PywrParameter)]
+#[derive(
+    serde::Deserialize, serde::Serialize, schemars::JsonSchema, Debug, Clone, PywrParameter,
+)]
 pub struct AggregatedParameter {
     #[serde(flatten)]
     pub meta: Option<ParameterMeta>,
@@ -28,7 +30,7 @@ impl AggregatedParameter {
     }
 }
 
-#[derive(serde::Deserialize, serde::Serialize, Debug, Clone)]
+#[derive(serde::Deserialize, serde::Serialize, schemars::JsonSchema, Debug, Clone)]
 #[serde(rename_all = "lowercase")]
 pub enum IndexAggFunc {
     Sum,
@@ -39,7 +41,9 @@ pub enum IndexAggFunc {
     All,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, Debug, Clone, PywrParameter)]
+#[derive(
+    serde::Deserialize, serde::Serialize, schemars::JsonSchema, Debug, Clone, PywrParameter,
+)]
 pub struct AggregatedIndexParameter {
     #[serde(flatten)]
     pub meta: Option<ParameterMeta>,

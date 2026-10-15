@@ -6,7 +6,10 @@ use pywr_v1_schema_macros::PywrParameter;
 use std::collections::HashMap;
 use std::path::PathBuf;
 
-#[derive(serde::Deserialize, serde::Serialize, Debug, Clone, PywrParameter)]
+#[derive(
+    serde::Deserialize, serde::Serialize, schemars::JsonSchema, Debug, Clone, PywrParameter,
+)]
+#[schemars(transform = crate::json_schema::constant_parameter_transform)]
 pub struct ConstantParameter {
     #[serde(flatten)]
     pub meta: Option<ParameterMeta>,
@@ -24,8 +27,9 @@ impl ConstantParameter {
     }
 }
 
-
-#[derive(serde::Deserialize, serde::Serialize, Debug, Clone, PywrParameter)]
+#[derive(
+    serde::Deserialize, serde::Serialize, schemars::JsonSchema, Debug, Clone, PywrParameter,
+)]
 pub struct ConstantScenarioParameter {
     #[serde(flatten)]
     pub meta: Option<ParameterMeta>,
@@ -44,7 +48,9 @@ impl ConstantScenarioParameter {
     }
 }
 
-#[derive(serde::Deserialize, serde::Serialize, Debug, Clone, PywrParameter)]
+#[derive(
+    serde::Deserialize, serde::Serialize, schemars::JsonSchema, Debug, Clone, PywrParameter,
+)]
 pub struct MaxParameter {
     #[serde(flatten)]
     pub meta: Option<ParameterMeta>,
@@ -58,7 +64,9 @@ impl MaxParameter {
     }
 }
 
-#[derive(serde::Deserialize, serde::Serialize, Debug, Clone, PywrParameter)]
+#[derive(
+    serde::Deserialize, serde::Serialize, schemars::JsonSchema, Debug, Clone, PywrParameter,
+)]
 pub struct NegativeParameter {
     #[serde(flatten)]
     pub meta: Option<ParameterMeta>,
@@ -71,7 +79,9 @@ impl NegativeParameter {
     }
 }
 
-#[derive(serde::Deserialize, serde::Serialize, Debug, Clone, PywrParameter)]
+#[derive(
+    serde::Deserialize, serde::Serialize, schemars::JsonSchema, Debug, Clone, PywrParameter,
+)]
 pub struct MinParameter {
     #[serde(flatten)]
     pub meta: Option<ParameterMeta>,
@@ -85,7 +95,9 @@ impl MinParameter {
     }
 }
 
-#[derive(serde::Deserialize, serde::Serialize, Debug, Clone, PywrParameter)]
+#[derive(
+    serde::Deserialize, serde::Serialize, schemars::JsonSchema, Debug, Clone, PywrParameter,
+)]
 pub struct NegativeMinParameter {
     #[serde(flatten)]
     pub meta: Option<ParameterMeta>,
@@ -99,7 +111,9 @@ impl NegativeMinParameter {
     }
 }
 
-#[derive(serde::Deserialize, serde::Serialize, Debug, Clone, PywrParameter)]
+#[derive(
+    serde::Deserialize, serde::Serialize, schemars::JsonSchema, Debug, Clone, PywrParameter,
+)]
 pub struct NegativeMaxParameter {
     #[serde(flatten)]
     pub meta: Option<ParameterMeta>,
@@ -113,7 +127,9 @@ impl NegativeMaxParameter {
     }
 }
 
-#[derive(serde::Deserialize, serde::Serialize, Debug, Clone, PywrParameter)]
+#[derive(
+    serde::Deserialize, serde::Serialize, schemars::JsonSchema, Debug, Clone, PywrParameter,
+)]
 pub struct DivisionParameter {
     #[serde(flatten)]
     pub meta: Option<ParameterMeta>,

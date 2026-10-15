@@ -31,7 +31,7 @@ pub use virtual_storage::{
     SeasonalVirtualStorageNode, VirtualStorageNode,
 };
 
-#[derive(serde::Deserialize, serde::Serialize, Debug, Clone)]
+#[derive(serde::Deserialize, serde::Serialize, schemars::JsonSchema, Debug, Clone)]
 pub struct NodePosition {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub schematic: Option<(f32, f32)>,
@@ -39,7 +39,7 @@ pub struct NodePosition {
     pub geographic: Option<(f32, f32)>,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, Debug, Clone)]
+#[derive(serde::Deserialize, serde::Serialize, schemars::JsonSchema, Debug, Clone)]
 pub struct NodeMeta {
     pub name: String,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -50,7 +50,7 @@ pub struct NodeMeta {
     pub tags: Option<HashMap<String, Value>>,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, Debug, Clone)]
+#[derive(serde::Deserialize, serde::Serialize, schemars::JsonSchema, Debug, Clone)]
 pub struct CustomNode {
     #[serde(rename = "type")]
     pub ty: String,
@@ -60,8 +60,9 @@ pub struct CustomNode {
     pub attributes: HashMap<String, Value>,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, VariantNames, Clone)]
+#[derive(serde::Deserialize, serde::Serialize, schemars::JsonSchema, VariantNames, Clone)]
 #[serde(tag = "type")]
+#[schemars(transform = crate::json_schema::core_node_transform)]
 pub enum CoreNode {
     #[serde(alias = "input")]
     Input(InputNode),
@@ -267,7 +268,7 @@ impl CoreNode {
     }
 }
 
-#[derive(serde::Deserialize, serde::Serialize, Clone)]
+#[derive(serde::Deserialize, serde::Serialize, schemars::JsonSchema, Clone)]
 #[serde(untagged)]
 pub enum Node {
     Core(Box<CoreNode>),

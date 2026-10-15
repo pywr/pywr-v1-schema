@@ -10,11 +10,13 @@ use std::ops::{Deref, DerefMut};
 use std::path::PathBuf;
 use std::vec::IntoIter;
 
-#[derive(serde::Deserialize, serde::Serialize, Clone)]
+#[derive(serde::Deserialize, serde::Serialize, schemars::JsonSchema, Clone)]
 pub struct Table {
     // Do not serialize name on the object as it is used as the key in the parent map,
     // and we don't want to duplicate it in the output.
+    // Supplied by the key of the parent map, so it is not part of the JSON object's schema.
     #[serde(skip_serializing)]
+    #[schemars(skip)]
     pub name: String,
     pub url: PathBuf,
     #[serde(skip_serializing_if = "Option::is_none")]
@@ -129,6 +131,21 @@ impl<'de> Deserialize<'de> for TableVec {
         D: Deserializer<'de>,
     {
         deserializer.deserialize_map(PywrTableMapVisitor::new())
+    }
+}
+
+// Tables are a JSON object keyed by table name; the key becomes `Table::name`.
+impl schemars::JsonSchema for TableVec {
+    fn schema_name() -> std::borrow::Cow<'static, str> {
+        "TableVec".into()
+    }
+
+    fn json_schema(generator: &mut schemars::SchemaGenerator) -> schemars::Schema {
+        schemars::json_schema!({
+            "description": "Tables keyed by name.",
+            "type": "object",
+            "additionalProperties": generator.subschema_for::<Table>()
+        })
     }
 }
 

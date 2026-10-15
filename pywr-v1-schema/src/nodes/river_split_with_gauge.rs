@@ -5,7 +5,7 @@ use crate::parameters::{
 use pywr_v1_schema_macros::PywrNode;
 use std::collections::HashMap;
 
-#[derive(serde::Deserialize, serde::Serialize, Debug, Clone, PywrNode)]
+#[derive(serde::Deserialize, serde::Serialize, schemars::JsonSchema, Debug, Clone, PywrNode)]
 pub struct RiverSplitWithGaugeNode {
     #[serde(flatten)]
     pub meta: NodeMeta,

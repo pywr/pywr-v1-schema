@@ -5,7 +5,9 @@ use pywr_v1_schema_macros::PywrParameter;
 use std::collections::HashMap;
 use std::path::PathBuf;
 
-#[derive(serde::Deserialize, serde::Serialize, Debug, Clone, PywrParameter)]
+#[derive(
+    serde::Deserialize, serde::Serialize, schemars::JsonSchema, Debug, Clone, PywrParameter,
+)]
 pub struct DailyProfileParameter {
     #[serde(flatten)]
     pub meta: Option<ParameterMeta>,
@@ -23,14 +25,16 @@ impl DailyProfileParameter {
     }
 }
 
-#[derive(serde::Deserialize, serde::Serialize, Debug, Clone)]
+#[derive(serde::Deserialize, serde::Serialize, schemars::JsonSchema, Debug, Clone)]
 #[serde(rename_all = "lowercase")]
 pub enum MonthInterpDay {
     First,
     Last,
 }
 
-#[derive(serde::Deserialize, serde::Serialize, Debug, Clone, PywrParameter)]
+#[derive(
+    serde::Deserialize, serde::Serialize, schemars::JsonSchema, Debug, Clone, PywrParameter,
+)]
 pub struct MonthlyProfileParameter {
     #[serde(flatten)]
     pub meta: Option<ParameterMeta>,
@@ -48,7 +52,9 @@ impl MonthlyProfileParameter {
     }
 }
 
-#[derive(serde::Deserialize, serde::Serialize, Debug, Clone, PywrParameter)]
+#[derive(
+    serde::Deserialize, serde::Serialize, schemars::JsonSchema, Debug, Clone, PywrParameter,
+)]
 pub struct UniformDrawdownProfileParameter {
     #[serde(flatten)]
     pub meta: Option<ParameterMeta>,
@@ -63,7 +69,9 @@ impl UniformDrawdownProfileParameter {
     }
 }
 
-#[derive(serde::Deserialize, serde::Serialize, Debug, Clone, PywrParameter)]
+#[derive(
+    serde::Deserialize, serde::Serialize, schemars::JsonSchema, Debug, Clone, PywrParameter,
+)]
 pub struct WeeklyProfileParameter {
     #[serde(flatten)]
     pub meta: Option<ParameterMeta>,
@@ -80,7 +88,9 @@ impl WeeklyProfileParameter {
     }
 }
 
-#[derive(serde::Deserialize, serde::Serialize, Debug, Clone, PywrParameter)]
+#[derive(
+    serde::Deserialize, serde::Serialize, schemars::JsonSchema, Debug, Clone, PywrParameter,
+)]
 pub struct RbfProfileParameter {
     #[serde(flatten)]
     pub meta: Option<ParameterMeta>,

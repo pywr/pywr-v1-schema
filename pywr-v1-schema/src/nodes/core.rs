@@ -5,7 +5,7 @@ use crate::parameters::{
 use pywr_v1_schema_macros::PywrNode;
 use std::collections::HashMap;
 
-#[derive(serde::Deserialize, serde::Serialize, Clone, PywrNode)]
+#[derive(serde::Deserialize, serde::Serialize, schemars::JsonSchema, Clone, PywrNode)]
 pub struct InputNode {
     #[serde(flatten)]
     pub meta: NodeMeta,
@@ -23,7 +23,7 @@ impl InputNode {
     }
 }
 
-#[derive(serde::Deserialize, serde::Serialize, Clone, PywrNode)]
+#[derive(serde::Deserialize, serde::Serialize, schemars::JsonSchema, Clone, PywrNode)]
 pub struct LinkNode {
     #[serde(flatten)]
     pub meta: NodeMeta,
@@ -41,7 +41,7 @@ impl LinkNode {
     }
 }
 
-#[derive(serde::Deserialize, serde::Serialize, Clone, PywrNode)]
+#[derive(serde::Deserialize, serde::Serialize, schemars::JsonSchema, Clone, PywrNode)]
 pub struct OutputNode {
     #[serde(flatten)]
     pub meta: NodeMeta,
@@ -59,7 +59,7 @@ impl OutputNode {
     }
 }
 
-#[derive(serde::Deserialize, serde::Serialize, Clone, PywrNode)]
+#[derive(serde::Deserialize, serde::Serialize, schemars::JsonSchema, Clone, PywrNode)]
 pub struct StorageNode {
     #[serde(flatten)]
     pub meta: NodeMeta,
@@ -81,7 +81,7 @@ impl StorageNode {
     }
 }
 
-#[derive(serde::Deserialize, serde::Serialize, Clone, PywrNode)]
+#[derive(serde::Deserialize, serde::Serialize, schemars::JsonSchema, Clone, PywrNode)]
 pub struct ReservoirNode {
     #[serde(flatten)]
     pub meta: NodeMeta,
@@ -103,7 +103,7 @@ impl ReservoirNode {
     }
 }
 
-#[derive(serde::Deserialize, serde::Serialize, Clone, PywrNode)]
+#[derive(serde::Deserialize, serde::Serialize, schemars::JsonSchema, Clone, PywrNode)]
 pub struct CatchmentNode {
     #[serde(flatten)]
     pub meta: NodeMeta,
@@ -119,7 +119,7 @@ impl CatchmentNode {
     }
 }
 
-#[derive(serde::Deserialize, serde::Serialize, Clone, PywrNode)]
+#[derive(serde::Deserialize, serde::Serialize, schemars::JsonSchema, Clone, PywrNode)]
 pub struct AggregatedNode {
     #[serde(flatten)]
     pub meta: NodeMeta,
@@ -145,7 +145,7 @@ impl AggregatedNode {
     }
 }
 
-#[derive(serde::Deserialize, serde::Serialize, Clone, PywrNode)]
+#[derive(serde::Deserialize, serde::Serialize, schemars::JsonSchema, Clone, PywrNode)]
 pub struct AggregatedStorageNode {
     #[serde(flatten)]
     pub meta: NodeMeta,

@@ -61,6 +61,29 @@ impl<'de> serde::Deserialize<'de> for Edge {
     }
 }
 
+// An edge is a JSON array. Entries beyond the fourth are ignored by the deserialiser, so `items` is
+// left open, and the third and fourth entries may be omitted, `null` or a string.
+impl schemars::JsonSchema for Edge {
+    fn schema_name() -> std::borrow::Cow<'static, str> {
+        "Edge".into()
+    }
+
+    fn json_schema(_generator: &mut schemars::SchemaGenerator) -> schemars::Schema {
+        schemars::json_schema!({
+            "description": "An edge: [from_node, to_node] or [from_node, to_node, from_slot, to_slot], where the slots may be null. Entries beyond the fourth are ignored.",
+            "type": "array",
+            "minItems": 2,
+            "prefixItems": [
+                {"type": "string"},
+                {"type": "string"},
+                {"type": ["string", "null"]},
+                {"type": ["string", "null"]}
+            ],
+            "items": true
+        })
+    }
+}
+
 impl serde::Serialize for Edge {
     fn serialize<S>(&self, serializer: S) -> Result<S::Ok, S::Error>
     where

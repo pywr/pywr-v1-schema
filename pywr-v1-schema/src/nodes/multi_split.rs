@@ -4,7 +4,7 @@ use crate::parameters::{
 };
 use std::collections::HashMap;
 
-#[derive(serde::Deserialize, serde::Serialize, Debug, Clone)]
+#[derive(serde::Deserialize, serde::Serialize, schemars::JsonSchema, Debug, Clone)]
 pub struct MultiSplitLinkNode {
     #[serde(flatten)]
     pub meta: NodeMeta,

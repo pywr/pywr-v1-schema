@@ -3,7 +3,7 @@ use crate::parameters::{ParameterValue, ParameterValueType, ParameterValueTypeMu
 use pywr_v1_schema_macros::PywrNode;
 use std::collections::HashMap;
 
-#[derive(serde::Deserialize, serde::Serialize, Clone, PywrNode)]
+#[derive(serde::Deserialize, serde::Serialize, schemars::JsonSchema, Clone, PywrNode)]
 pub struct VirtualStorageNode {
     #[serde(flatten)]
     pub meta: NodeMeta,
@@ -41,7 +41,7 @@ fn default_reset_month() -> u32 {
     1
 }
 
-#[derive(serde::Deserialize, serde::Serialize, Clone, PywrNode)]
+#[derive(serde::Deserialize, serde::Serialize, schemars::JsonSchema, Clone, PywrNode)]
 pub struct AnnualVirtualStorageNode {
     #[serde(flatten)]
     pub meta: NodeMeta,
@@ -85,7 +85,7 @@ fn default_initial_months() -> u8 {
     1
 }
 
-#[derive(serde::Deserialize, serde::Serialize, Clone, PywrNode)]
+#[derive(serde::Deserialize, serde::Serialize, schemars::JsonSchema, Clone, PywrNode)]
 pub struct MonthlyVirtualStorageNode {
     #[serde(flatten)]
     pub meta: NodeMeta,
@@ -129,7 +129,7 @@ fn default_end_month() -> u32 {
     12
 }
 
-#[derive(serde::Deserialize, serde::Serialize, Clone, PywrNode)]
+#[derive(serde::Deserialize, serde::Serialize, schemars::JsonSchema, Clone, PywrNode)]
 pub struct SeasonalVirtualStorageNode {
     #[serde(flatten)]
     pub meta: NodeMeta,
@@ -169,7 +169,7 @@ impl SeasonalVirtualStorageNode {
     }
 }
 
-#[derive(serde::Deserialize, serde::Serialize, Clone, PywrNode)]
+#[derive(serde::Deserialize, serde::Serialize, schemars::JsonSchema, Clone, PywrNode)]
 pub struct RollingVirtualStorageNode {
     #[serde(flatten)]
     pub meta: NodeMeta,

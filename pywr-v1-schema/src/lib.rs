@@ -1,4 +1,5 @@
 pub mod edge;
+pub mod json_schema;
 pub mod model;
 pub mod nodes;
 pub mod parameters;

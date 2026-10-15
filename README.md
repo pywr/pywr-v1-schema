@@ -81,14 +81,40 @@ may make use of the library for parsing Pywr JSON.
 
 Pywr-schema is built with Rust and requires a working
 [installation](https://www.rust-lang.org/tools/install). To validate a Pywr JSON file run the
-`pywr_validator` as follows. 
+`pywr-v1-validator`'s `validate` command as follows. 
 
 
    ```sh
    git clone https://github.com/pywr/pywr-schema.git
    cd pywr-schema
-   cargo r --bin pywr_validator -- --path /path/to/my-model.json
+   cargo r --bin pywr-v1-validator -- validate --path /path/to/my-model.json
    ```
+
+### JSON Schema
+
+The types in the library can also generate a [JSON Schema](https://json-schema.org/) (draft
+2020-12) for Pywr v1 model files, for use by editors and other tools. Write it with the
+validator's `export-schema` command.
+
+   ```sh
+   cargo r --bin pywr-v1-validator -- export-schema model.schema.json
+   ```
+
+`--kind` selects `model` (the default), `multi-model` or `network`. The same schemas are available to
+Rust code from `pywr_v1_schema::json_schema`.
+
+Each release of the `pywr-v1-schema` package attaches the `model` and `multi-model` schemas to its
+GitHub release as `pywr-v1-model.schema.json` and `pywr-v1-multi-model.schema.json`. The strict and
+network variants are not attached.
+
+A schema describes the shape of a file, not whether the model is valid. References between nodes,
+parameters and tables, unique names and the contents of external files are not checked.
+
+Nodes and parameters fall back to a custom type when a core definition fails to deserialise, so
+by default a core node or parameter with a misspelt field is still valid. Pass `--strict` to
+require a custom node or parameter to use a type that is not a core type, so that such a definition
+is reported. It is then reported whether it is invalid or uses a feature this crate does not model,
+so a failure under `--strict` is not by itself an error in the model.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

@@ -5,7 +5,9 @@ use pywr_v1_schema_macros::PywrParameter;
 use std::collections::HashMap;
 use std::path::PathBuf;
 
-#[derive(serde::Deserialize, serde::Serialize, Debug, Clone, PywrParameter)]
+#[derive(
+    serde::Deserialize, serde::Serialize, schemars::JsonSchema, Debug, Clone, PywrParameter,
+)]
 pub struct ControlCurveInterpolatedParameter {
     #[serde(flatten)]
     pub meta: Option<ParameterMeta>,
@@ -24,7 +26,9 @@ impl ControlCurveInterpolatedParameter {
     }
 }
 
-#[derive(serde::Deserialize, serde::Serialize, Debug, Clone, PywrParameter)]
+#[derive(
+    serde::Deserialize, serde::Serialize, schemars::JsonSchema, Debug, Clone, PywrParameter,
+)]
 pub struct ControlCurveIndexParameter {
     #[serde(flatten)]
     pub meta: Option<ParameterMeta>,
@@ -40,7 +44,9 @@ impl ControlCurveIndexParameter {
     }
 }
 
-#[derive(serde::Deserialize, serde::Serialize, Debug, Clone, PywrParameter)]
+#[derive(
+    serde::Deserialize, serde::Serialize, schemars::JsonSchema, Debug, Clone, PywrParameter,
+)]
 pub struct ControlCurveParameter {
     #[serde(flatten)]
     pub meta: Option<ParameterMeta>,
@@ -59,7 +65,9 @@ impl ControlCurveParameter {
     }
 }
 
-#[derive(serde::Deserialize, serde::Serialize, Debug, Clone, PywrParameter)]
+#[derive(
+    serde::Deserialize, serde::Serialize, schemars::JsonSchema, Debug, Clone, PywrParameter,
+)]
 pub struct ControlCurvePiecewiseInterpolatedParameter {
     #[serde(flatten)]
     pub meta: Option<ParameterMeta>,
