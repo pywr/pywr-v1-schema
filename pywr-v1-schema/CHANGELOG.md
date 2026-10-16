@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.25.1] - 2026-10-15
+
+### 🚀 Features
+
+- *(schema)* Generate JSON Schema documents for the v1 model formats ([#300](https://github.com/pywr/pywr-v1-schema/pull/300))
+
+
 ## [0.25.0] - 2026-09-12
 
 ### 🚀 Features

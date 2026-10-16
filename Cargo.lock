@@ -623,7 +623,7 @@ dependencies = [
 
 [[package]]
 name = "pywr-v1-schema"
-version = "0.25.0"
+version = "0.25.1"
 dependencies = [
  "jiff",
  "jsonschema",
@@ -638,7 +638,7 @@ dependencies = [
 
 [[package]]
 name = "pywr-v1-schema-macros"
-version = "0.25.0"
+version = "0.25.1"
 dependencies = [
  "quote",
  "syn 3.0.7",
@@ -646,7 +646,7 @@ dependencies = [
 
 [[package]]
 name = "pywr-v1-validator"
-version = "0.25.0"
+version = "0.25.1"
 dependencies = [
  "clap",
  "pywr-v1-schema",
@@ -694,7 +694,7 @@ checksum = "92ecd8964f8453721699a1ed72037b0db49ce2f5a5138486ee89bed6f67cdf3a"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 3.0.6",
+ "syn 3.0.7",
 ]
 
 [[package]]
@@ -772,7 +772,7 @@ dependencies = [
  "proc-macro2",
  "quote",
  "serde_derive_internals",
- "syn 3.0.6",
+ "syn 3.0.7",
 ]
 
 [[package]]
@@ -819,7 +819,7 @@ checksum = "f852137cce035d6a4df67ccce505ff6b3e9fd3a10e3e52b24dc71e650bb1a9bd"
 dependencies = [
  "proc-macro2",
  "quote",
- "syn 3.0.6",
+ "syn 3.0.7",
 ]
 
 [[package]]
@@ -991,7 +991,7 @@ dependencies = [
  "bumpalo",
  "proc-macro2",
  "quote",
- "syn 3.0.6",
+ "syn 3.0.7",
  "wasm-bindgen-shared",
 ]
 
