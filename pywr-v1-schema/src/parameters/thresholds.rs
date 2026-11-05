@@ -35,6 +35,7 @@ pub struct ParameterThresholdParameter {
     pub values: Option<Vec<f64>>,
     #[serde(default = "default_predicate")]
     pub predicate: Predicate,
+    pub ratchet: Option<bool>,
 }
 
 impl ParameterThresholdParameter {
@@ -54,6 +55,7 @@ pub struct NodeThresholdParameter {
     pub values: Option<Vec<f64>>,
     #[serde(default = "default_predicate")]
     pub predicate: Predicate,
+    pub ratchet: Option<bool>,
 }
 
 impl NodeThresholdParameter {
@@ -73,6 +75,7 @@ pub struct StorageThresholdParameter {
     pub values: Option<Vec<f64>>,
     #[serde(default = "default_predicate")]
     pub predicate: Predicate,
+    pub ratchet: Option<bool>,
 }
 
 impl StorageThresholdParameter {
@@ -89,6 +92,7 @@ pub struct MultipleThresholdIndexParameter {
     pub meta: Option<ParameterMeta>,
     pub node: String,
     pub thresholds: Vec<ParameterValue>,
+    pub ratchet: Option<bool>,
 }
 
 impl MultipleThresholdIndexParameter {
@@ -105,6 +109,7 @@ pub struct MultipleThresholdParameterIndexParameter {
     pub meta: Option<ParameterMeta>,
     pub parameter: ParameterValue,
     pub thresholds: Vec<ParameterValue>,
+    pub ratchet: Option<bool>,
 }
 
 impl MultipleThresholdParameterIndexParameter {
@@ -123,6 +128,7 @@ pub struct CurrentYearThresholdParameter {
     pub values: Option<Vec<f64>>,
     #[serde(default = "default_predicate")]
     pub predicate: Predicate,
+    pub ratchet: Option<bool>,
 }
 
 impl CurrentYearThresholdParameter {
@@ -141,6 +147,7 @@ pub struct CurrentOrdinalDayThresholdParameter {
     pub values: Option<Vec<f64>>,
     #[serde(default = "default_predicate")]
     pub predicate: Predicate,
+    pub ratchet: Option<bool>,
 }
 
 impl CurrentOrdinalDayThresholdParameter {
@@ -152,12 +159,12 @@ impl CurrentOrdinalDayThresholdParameter {
 #[cfg(test)]
 mod tests {
     use crate::parameters::{
+        ParameterThresholdParameter, ParameterValue, Predicate,
         thresholds::{
             CurrentOrdinalDayThresholdParameter, CurrentYearThresholdParameter,
             MultipleThresholdIndexParameter, MultipleThresholdParameterIndexParameter,
             NodeThresholdParameter, StorageThresholdParameter,
         },
-        ParameterThresholdParameter, ParameterValue, Predicate,
     };
 
     #[test]
