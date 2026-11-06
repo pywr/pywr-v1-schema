@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.26.0] - 2026-11-06
+
+### 🚀 Features
+
+- Add ratchet field to threshold parameters. ([#303](https://github.com/pywr/pywr-v1-schema/pull/303))
+
+
 ## [0.25.1] - 2026-10-15
 
 ### 🚀 Features

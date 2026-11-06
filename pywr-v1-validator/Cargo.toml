@@ -10,6 +10,6 @@ repository.workspace = true
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-pywr-v1-schema = { path = "../pywr-v1-schema", version = "0.25" }
+pywr-v1-schema = { path = "../pywr-v1-schema", version = "0.26" }
 clap = { version = "4", features = ["derive"] }
 serde_json = "1.0"
