@@ -624,7 +624,7 @@ dependencies = [
 
 [[package]]
 name = "pywr-v1-schema"
-version = "0.26.0"
+version = "0.26.1"
 dependencies = [
  "jiff",
  "jsonschema",
@@ -639,7 +639,7 @@ dependencies = [
 
 [[package]]
 name = "pywr-v1-schema-macros"
-version = "0.26.0"
+version = "0.26.1"
 dependencies = [
  "quote",
  "syn 3.0.10",
@@ -647,7 +647,7 @@ dependencies = [
 
 [[package]]
 name = "pywr-v1-validator"
-version = "0.26.0"
+version = "0.26.1"
 dependencies = [
  "clap",
  "pywr-v1-schema",
