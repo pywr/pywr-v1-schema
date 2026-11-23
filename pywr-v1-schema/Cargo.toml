@@ -22,4 +22,4 @@ jiff = { version = "0.2", features = ["serde"] }
 schemars = { version = "1.2", features = ["jiff02"] }
 
 [dev-dependencies]
-jsonschema = { version = "0.58.6", default-features = false }
+jsonschema = { version = "0.60.2", default-features = false }
